@@ -1,0 +1,26 @@
+## Title: Querier
+## Notes: A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.
+## Author: Ackis
+## eMail: ackis@shaw.ca
+## X-email: Ackis@shaw.ca
+
+## Interface: 20400
+## Version: 0.10
+## X-Revision: $Rev$
+## X-Date: $Date$
+
+## X-Category: Inventory
+## X-Localizations: enUS
+## X-Website: 
+## X-Feedback: 
+## X-AceForum: 
+## X-LoadOn-Slash: /querier
+
+## Dependencies:
+## X-Embeds: Ace3
+## OptionalDeps: Ace3
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+embeds.xml
+Querier.lua
