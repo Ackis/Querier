@@ -8,8 +8,8 @@ local GetSpellLink = GetSpellLink
 local GetTime = GetTime
 
 -- Time between queries to reset list
---local TimeQuery = 600
-local TimeQuery = 10
+local TimeQuery = 600
+--local TimeQuery = 10
 -- Max number of queries to allow during time period
 local MaxQuery = 10
 
