@@ -1,6 +1,18 @@
 
 Querier = LibStub("AceAddon-3.0"):NewAddon("Querier", "AceConsole-3.0")
 
+local addon = Querier
+local tonumber = tonumber
+local GetItemInfo = GetItemInfo
+local GetSpellLink = GetSpellLink
+local GetTime = GetTime
+
+-- Time between queries to reset list
+--local TimeQuery = 600
+local TimeQuery = 10
+-- Max number of queries to allow during time period
+local MaxQuery = 10
+
 local AceConfig = LibStub("AceConfig-3.0")
 
 local options = { 
@@ -25,32 +37,67 @@ local options = {
 	},
 }
 
-AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
 
-function Querier:ItemQuery(ItemID)
+function addon:OnInitialize()
 
-	local id = tonumber(ItemID)
-	if (not id) then
-		return self:Print("Invalid input.  Must be numeric item-ID.")
-	end
+	AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
+    self:RegisterChatCommand("ItemQuery", "ItemQuery")
+    self:RegisterChatCommand("SpellQuery", "SpellQuery")
 
-	GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
+end
 
-	local _,itemlink = GetItemInfo(id)
+do
 
-	if (itemlink ~= nil) then
+	local lastitem = nil
+	local lastquery = nil
+	local totalquery = 0
 
-		self:Print("Item link found: " .. itemlink)
+	function addon:ItemQuery(ItemID)
 
-	else
+		local id = tonumber(ItemID)
+		if (not id) then
+			return self:Print("Invalid input.  Must be numeric item-ID.")
+		end
 
-		self:Print("Item link not found.   Try again to see if item has been cached.")
+		local maxtime
+		if (lastquery) then
+			maxtime = lastquery + TimeQuery
+		else
+			maxtime = 0
+		end
+
+		-- If we haven't done a query in a long time, reset the query count.
+		if lastquery and (GetTime() > maxtime) then
+			totalquery = 0
+		end
+
+		-- Only do the query if we haven't done too many
+		if (totalquery < MaxQuery) then
+			-- Attempt to cache the ID
+			GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
+			-- Set the time of the query so we can reset failed queries later
+			lastquery = GetTime()
+			self:Print("Item queried.")
+
+			local _,itemlink = GetItemInfo(id)
+
+			if (itemlink ~= nil) then
+				self:Print("Item link found: " .. itemlink)
+			else
+				-- Increase the number of failed queries
+				totalquery = totalquery + 1
+				self:Print("Item link not found.   Try again to see if item has been cached.")
+			end
+
+		else
+			self:Print("Item not queried as there is a risk of disconnect.  Please try again later.")
+		end
 
 	end
 
 end
 
-function Querier:SpellQuery(SpellID)
+function addon:SpellQuery(SpellID)
 
 	local id = tonumber(SpellID)
 	if (not id) then
