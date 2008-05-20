@@ -43,6 +43,8 @@ function addon:OnInitialize()
 	AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
     self:RegisterChatCommand("ItemQuery", "ItemQuery")
     self:RegisterChatCommand("SpellQuery", "SpellQuery")
+	self:RegisterChatCommand("iq", "ItemQuery")
+    self:RegisterChatCommand("sq", "SpellQuery")
 
 end
 
