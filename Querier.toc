@@ -11,10 +11,10 @@
 
 ## X-Category: Inventory
 ## X-Localizations: enUS
-## X-Website: 
-## X-Feedback: 
-## X-AceForum: 
-## X-LoadOn-Slash: /querier
+## X-Website: http://www.wowace.com/wiki/Querier
+## X-Feedback: http://www.wowace.com/forums/index.php?topic=13441
+## X-AceForum: 13441
+## X-LoadOn-Slash: /querier, /iq, /sq
 
 ## Dependencies:
 ## X-Embeds: Ace3
