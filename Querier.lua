@@ -55,7 +55,7 @@ do
 	local totalquery = 0
 
 	function addon:ItemQuery(ItemID)
-
+--local _, _, itemID = string.find(GetMerchantItemLink(i), "^|c%x+|Hitem:([0-9]+)[:0-9]+|h%[.+%]")
 		local id = tonumber(ItemID)
 		if (not id) then
 			return self:Print("Invalid input.  Must be numeric item-ID.")
