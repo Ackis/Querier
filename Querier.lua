@@ -55,44 +55,56 @@ do
 	local totalquery = 0
 
 	function addon:ItemQuery(ItemID)
---local _, _, itemID = string.find(GetMerchantItemLink(i), "^|c%x+|Hitem:([0-9]+)[:0-9]+|h%[.+%]")
+
 		local id = tonumber(ItemID)
+		-- We have a string, lets assume it's an item link
 		if (not id) then
-			return self:Print("Invalid input.  Must be numeric item-ID.")
-		end
 
-		local maxtime
-		if (lastquery) then
-			maxtime = lastquery + TimeQuery
-		else
-			maxtime = 0
-		end
+			local _, _, ID = string.find(ItemID, "^|c%x+|Hitem:([0-9]+)[:0-9]+|h%[.+%]")
 
-		-- If we haven't done a query in a long time, reset the query count.
-		if lastquery and (GetTime() > maxtime) then
-			totalquery = 0
-		end
-
-		-- Only do the query if we haven't done too many
-		if (totalquery < MaxQuery) then
-			-- Attempt to cache the ID
-			GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
-			-- Set the time of the query so we can reset failed queries later
-			lastquery = GetTime()
-			self:Print("Item queried.")
-
-			local _,itemlink = GetItemInfo(id)
-
-			if (itemlink ~= nil) then
-				self:Print("Item link found: " .. itemlink)
+			if (tonumber(ID) ~= nil) then
+				self:Print("Item link: " .. ItemID .. " is item ID: " .. ID)
 			else
-				-- Increase the number of failed queries
-				totalquery = totalquery + 1
-				self:Print("Item link not found.   Try again to see if item has been cached.")
+				self:Print("Invalid input.  Must be numeric item-ID or item link.")
 			end
 
+		-- We've got a number, lets try to get the link via ID
 		else
-			self:Print("Item not queried as there is a risk of disconnect.  Please try again later.")
+
+			local maxtime
+			if (lastquery) then
+				maxtime = lastquery + TimeQuery
+			else
+				maxtime = 0
+			end
+
+			-- If we haven't done a query in a long time, reset the query count.
+			if lastquery and (GetTime() > maxtime) then
+				totalquery = 0
+			end
+
+			-- Only do the query if we haven't done too many
+			if (totalquery < MaxQuery) then
+				-- Attempt to cache the ID
+				GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
+				-- Set the time of the query so we can reset failed queries later
+				lastquery = GetTime()
+				self:Print("Item queried.")
+
+				local _,itemlink = GetItemInfo(id)
+
+				if (itemlink ~= nil) then
+					self:Print("Item link found: " .. itemlink)
+				else
+					-- Increase the number of failed queries
+					totalquery = totalquery + 1
+					self:Print("Item link not found.   Try again to see if item has been cached.")
+				end
+
+			else
+				self:Print("Item not queried as there is a risk of disconnect.  Please try again later.")
+			end
+
 		end
 
 	end
@@ -103,17 +115,19 @@ function addon:SpellQuery(SpellID)
 
 	local id = tonumber(SpellID)
 	if (not id) then
-		return self:Print("Invalid input.  Must be numeric item-ID.")
-	end
+			local _, _, ID = string.find(ItemID, "^|c%x+|Hspell:([0-9]+)[:0-9]+|h%[.+%]")
 
-	if (GetSpellLink(id) ~= nil) then
-
-		self:Print("Spell link found: " .. GetSpellLink(id))
-
+			if (tonumber(ID) ~= nil) then
+				self:Print("Spell link: " .. ItemID .. " is spell ID: " .. ID)
+			else
+				self:Print("Invalid input.  Must be numeric spell-ID or spell link.")
+			end
 	else
-
-		self:Print("Spell link unknown.")
-
+		if (GetSpellLink(id) ~= nil) then
+			self:Print("Spell link found: " .. GetSpellLink(id))
+		else
+			self:Print("Spell link unknown.")
+		end
 	end
 
 end
