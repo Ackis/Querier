@@ -60,7 +60,9 @@ do
 		-- We have a string, lets assume it's an item link
 		if (not id) then
 
-			local _, _, ID = string.find(ItemID, "^|c%x+|Hitem:([0-9]+)[:0-9]+|h%[.+%]")
+			-- New regexp thanks to Arrowmaster
+			local _, _, ID = string.find(ItemID, "item:(%d+)")
+			--local _, _, ID = string.find(ItemID, "^|c%x+|Hitem:([0-9]+)[:0-9]+|h%[.+%]")
 
 			if (tonumber(ID) ~= nil) then
 				self:Print("Item link: " .. ItemID .. " is item ID: " .. ID)
