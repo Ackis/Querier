@@ -117,10 +117,10 @@ function addon:SpellQuery(SpellID)
 
 	local id = tonumber(SpellID)
 	if (not id) then
-			local _, _, ID = string.find(ItemID, "^|c%x+|Hspell:([0-9]+)[:0-9]+|h%[.+%]")
+			local _, _, ID = string.find(SpellID, "^|c%x+|Hspell:([0-9]+)[:0-9]+|h%[.+%]")
 
 			if (tonumber(ID) ~= nil) then
-				self:Print("Spell link: " .. ItemID .. " is spell ID: " .. ID)
+				self:Print("Spell link: " .. SpellID .. " is spell ID: " .. ID)
 			else
 				self:Print("Invalid input.  Must be numeric spell-ID or spell link.")
 			end
