@@ -41,6 +41,7 @@ local options = {
 function addon:OnInitialize()
 
 	AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
+	LibStub("LibAboutPanel").new(nil, "Querier")
     self:RegisterChatCommand("ItemQuery", "ItemQuery")
     self:RegisterChatCommand("SpellQuery", "SpellQuery")
 	self:RegisterChatCommand("iq", "ItemQuery")
