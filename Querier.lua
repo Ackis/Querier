@@ -42,10 +42,10 @@ function addon:OnInitialize()
 
 	AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
 	LibStub("LibAboutPanel").new(nil, "Querier")
-    self:RegisterChatCommand("ItemQuery", "ItemQuery")
-    self:RegisterChatCommand("SpellQuery", "SpellQuery")
+	self:RegisterChatCommand("ItemQuery", "ItemQuery")
+	self:RegisterChatCommand("SpellQuery", "SpellQuery")
 	self:RegisterChatCommand("iq", "ItemQuery")
-    self:RegisterChatCommand("sq", "SpellQuery")
+	self:RegisterChatCommand("sq", "SpellQuery")
 
 end
 
