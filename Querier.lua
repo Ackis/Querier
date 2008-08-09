@@ -6,6 +6,7 @@ local tonumber = tonumber
 local GetItemInfo = GetItemInfo
 local GetSpellLink = GetSpellLink
 local GetTime = GetTime
+local maxspells = 60000
 
 -- Time between queries to reset list
 local TimeQuery = 600
@@ -123,7 +124,7 @@ function addon:SpellQuery(SpellID)
 				self:Print("Spell link: " .. SpellID .. " is spell ID: " .. ID)
 			else
 				local spellName
-				for i = 1, 50000 do
+				for i = 1, maxspells do
 					spellName = GetSpellInfo(i)
 					if (spellName and (spellName:lower() == SpellID:lower())) then
 						self:Print("Spell link: " .. GetSpellLink(i) .. " is spell ID: " .. tostring(i))
