@@ -14,35 +14,48 @@ local TimeQuery = 600
 -- Max number of queries to allow during time period
 local MaxQuery = 10
 
-local AceConfig = LibStub("AceConfig-3.0")
+local function giveOptions()
 
-local options = { 
-	type='group',
-	args = {
-		ItemQuery = {
-			type = "input",
-			name = "Item Query",
-			desc = "Queries the server and provides an item link.",
-			get = false,
-			set = function(info, v) Querier:ItemQuery(v) end,
-			order = 1,
-		},
-		SpellQuery = {
-			type = "input",
-			name = "Spell Query",
-			desc = "Queries the server and provides an spell link.",
-			get = false,
-			set = function(info, v) Querier:SpellQuery(v) end,
-			order = 2,
-		},
-	},
-}
+	local options = { 
+		type='group',
+		args = {
+			ItemQuery = {
+				type = "input",
+				name = "Item Query",
+				desc = "Queries the server and provides an item link.",
+				get = false,
+				set = function(info, v) Querier:ItemQuery(v) end,
+				order = 1,
+			},
+			SpellQuery = {
+				type = "input",
+				name = "Spell Query",
+				desc = "Queries the server and provides an spell link.",
+				get = false,
+				set = function(info, v) Querier:SpellQuery(v) end,
+				order = 2,
+			},
+		}
+	}
+
+	return options
+
+end
 
 
 function addon:OnInitialize()
 
-	AceConfig:RegisterOptionsTable("Querier", options, {"Querier"})
-	LibStub("LibAboutPanel").new(nil, "Querier")
+	local AceConfig = LibStub("AceConfig-3.0")
+	local AceConfigReg = LibStub("AceConfigRegistry-3.0")
+	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+
+	AceConfig:RegisterOptionsTable("Querier", giveOptions)
+
+	-- Create blizzard interface options stuff
+	self.optionsFrame = AceConfigDialog:AddToBlizOptions("Querier","Querier")
+	self.optionsFrame["About"] = LibStub("LibAboutPanel").new("Querier", "Querier")
+
+	-- Create slash commands
 	self:RegisterChatCommand("ItemQuery", "ItemQuery")
 	self:RegisterChatCommand("SpellQuery", "SpellQuery")
 	self:RegisterChatCommand("iq", "ItemQuery")
