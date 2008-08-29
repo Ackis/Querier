@@ -27,13 +27,29 @@ local function giveOptions()
 				set = function(info, v) Querier:ItemQuery(v) end,
 				order = 1,
 			},
+			ItemScan = {
+				type = "input",
+				name = "Item Scan",
+				desc = "Scans the server and provides an item links from first input to second input.",
+				get = false,
+				set = function(info, v) Querier:ItemScan(v) end,
+				order = 4,
+			},
 			SpellQuery = {
 				type = "input",
 				name = "Spell Query",
 				desc = "Queries the server and provides an spell link.",
 				get = false,
 				set = function(info, v) Querier:SpellQuery(v) end,
-				order = 2,
+				order = 3,
+			},
+			SpellScan = {
+				type = "input",
+				name = "Spell Scan",
+				desc = "Scans the server and provides an spell links from first input to second input.",
+				get = false,
+				set = function(info, v) Querier:SpellScan(v) end,
+				order = 4,
 			},
 		}
 	}
@@ -60,6 +76,10 @@ function addon:OnInitialize()
 	self:RegisterChatCommand("SpellQuery", "SpellQuery")
 	self:RegisterChatCommand("iq", "ItemQuery")
 	self:RegisterChatCommand("sq", "SpellQuery")
+	self:RegisterChatCommand("ItemScan", "ItemScan")
+	self:RegisterChatCommand("SpellScan", "SpellScan")
+	self:RegisterChatCommand("is", "ItemScan")
+	self:RegisterChatCommand("ss", "SpellScan")
 
 end
 
@@ -111,14 +131,19 @@ do
 
 				if (itemlink ~= nil) then
 					self:Print("Item link found: " .. itemlink)
+					return 0
 				else
 					-- Increase the number of failed queries
 					totalquery = totalquery + 1
 					self:Print("Item link not found.   Try again to see if item has been cached.")
+					return 1
 				end
 
 			else
+
 				self:Print("Item not queried as there is a risk of disconnect.  Please try again later.")
+				return 2
+
 			end
 
 		end
@@ -152,6 +177,41 @@ function addon:SpellQuery(SpellID)
 		else
 			self:Print("Spell link unknown.")
 		end
+	end
+
+end
+
+function addon:ItemScan(StartID, EndID)
+
+	self:Print("Starting Item ID scan from ItemID: " .. StartID .. " to SpellID: " .. EndID)
+
+	for i=StartID,EndID,1 do
+
+		local status = self:ItemQuery(i)
+
+		if (status == 1) then
+
+			self:ItemQuery(i)
+
+		elseif (status == 2) then
+
+			self:Print("Stopping automated item scan because of disconnect issues.")
+			break
+
+		end
+
+	end
+
+end
+
+function addon:SpellScan(StartID, EndID)
+
+	self:Print("Starting Spell ID scan from SpellID: " .. StartID .. " to SpellID: " .. EndID)
+
+	for i=StartID,EndID,1 do
+
+		self:SpellQuery(i)
+
 	end
 
 end
