@@ -24,6 +24,8 @@
 ## X-Feedback: http://www.curse.com/downloads/details/12775/
 ## X-AceForum: 13441
 ## X-RelSite-Curse: 12775
+## X-RelSite-WoWI: 9072
+## X-RelSite-WoWUI: 6461
 ## X-LoadOn-Slash: /querier, /iq, /sq, /ss, /is, /itemquery, /spellquery, /itemscan, /spellscan
 
 ## Dependencies:

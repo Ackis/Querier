@@ -181,7 +181,23 @@ function addon:SpellQuery(SpellID)
 
 end
 
-function addon:ItemScan(StartID, EndID)
+function addon:ItemScan(args)
+
+	local StartID, EndID = string.match(args, "([a-z0-9]+)[ ]?(.*)")
+
+	if (not StartID) or (not tonumber(StartID)) or (not EndID) or (not tonumber(EndID)) then
+
+		self:Print("Please enter a valid start and end ID.")
+		return
+
+	end
+
+	if (StartID > EndID) then
+
+		self:Print("The end ID must be greater than the starting ID. Moron.")
+		return
+
+	end
 
 	self:Print("Starting Item ID scan from ItemID: " .. StartID .. " to SpellID: " .. EndID)
 
@@ -204,7 +220,23 @@ function addon:ItemScan(StartID, EndID)
 
 end
 
-function addon:SpellScan(StartID, EndID)
+function addon:SpellScan(args)
+
+	local StartID, EndID = string.match(args, "([a-z0-9]+)[ ]?(.*)")
+
+	if (not StartID) or (not tonumber(StartID)) or (not EndID) or (not tonumber(EndID)) then
+
+		self:Print("Please enter a valid start and end ID.")
+		return
+
+	end
+
+	if (StartID > EndID) then
+
+		self:Print("The end ID must be greater than the starting ID. Moron.")
+		return
+
+	end
 
 	self:Print("Starting Spell ID scan from SpellID: " .. StartID .. " to SpellID: " .. EndID)
 
