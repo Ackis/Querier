@@ -9,8 +9,9 @@ local GetTime = GetTime
 local maxspells = 60000
 
 -- Time between queries to reset list
-local TimeQuery = 600
---local TimeQuery = 10
+local TimeQuery = 300
+-- Addon version
+local addonversion = GetAddOnMetadata("Querier", "Version")
 -- Max number of queries to allow during time period
 local MaxQuery = 10
 
@@ -19,37 +20,86 @@ local function giveOptions()
 	local options = { 
 		type='group',
 		args = {
+			header1 =
+			{
+				order = 1,
+				type = "header",
+				name = "",
+			},
+			version =
+			{
+				order = 2,
+				type = "description",
+				name = "Version " .. addonversion .. "\n",
+			},
+			about =
+			{
+				order = 3,
+				type = "description",
+				name = "A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.\n\nCommand line shortcuts are provided beside the name.\n",
+			},
+			header2 =
+			{
+				order = 4,
+				type = "header",
+				name = "",
+			},
+			itemdesc =
+			{
+				order = 10,
+				type = "description",
+				name = "To perform an item scan, enter the start ID followed by the end ID and click ok (ie: 500 1000).\n",
+			},
 			ItemQuery = {
 				type = "input",
-				name = "Item Query",
+				name = "Item Query (/iq)",
 				desc = "Queries the server and provides an item link.",
 				get = false,
 				set = function(info, v) Querier:ItemQuery(v) end,
-				order = 1,
+				order = 11,
 			},
 			ItemScan = {
 				type = "input",
-				name = "Item Scan",
+				name = "Item Scan (/is)",
 				desc = "Scans the server and provides an item links from first input to second input.",
 				get = false,
 				set = function(info, v) Querier:ItemScan(v) end,
-				order = 4,
+				order = 15,
+			},
+			ResetItem = {
+				type = "execute",
+				name = "Reset Item Lock",
+				desc = "Resets the item lock when querying items.",
+				set = function() Querier:ResetItemLock() end,
+				order = 16,
+			},
+			header3 =
+			{
+				order = 20,
+				type = "header",
+				name = "",
+			},
+			spelldesc =
+			{
+				order = 21,
+				type = "description",
+				name = "To perform a spell scan, enter the start ID followed by the end ID and click ok (ie: 500 1000).\n",
 			},
 			SpellQuery = {
 				type = "input",
-				name = "Spell Query",
+				name = "Spell Query (/sq)",
 				desc = "Queries the server and provides an spell link.",
 				get = false,
 				set = function(info, v) Querier:SpellQuery(v) end,
-				order = 3,
+				order = 30,
 			},
 			SpellScan = {
 				type = "input",
-				name = "Spell Scan",
+				name = "Spell Scan (/ss)",
 				desc = "Scans the server and provides an spell links from first input to second input.",
 				get = false,
 				set = function(info, v) Querier:SpellScan(v) end,
-				order = 4,
+				order = 35,
 			},
 		}
 	}
@@ -72,14 +122,25 @@ function addon:OnInitialize()
 	self.optionsFrame["About"] = LibStub("LibAboutPanel").new("Querier", "Querier")
 
 	-- Create slash commands
-	self:RegisterChatCommand("ItemQuery", "ItemQuery")
-	self:RegisterChatCommand("SpellQuery", "SpellQuery")
+	self:RegisterChatCommand("querier", "SlashHandler")
 	self:RegisterChatCommand("iq", "ItemQuery")
 	self:RegisterChatCommand("sq", "SpellQuery")
-	self:RegisterChatCommand("ItemScan", "ItemScan")
-	self:RegisterChatCommand("SpellScan", "SpellScan")
 	self:RegisterChatCommand("is", "ItemScan")
 	self:RegisterChatCommand("ss", "SpellScan")
+
+end
+
+function addon:SlashHandler(input)
+
+	local lower = string.lower(input)
+
+	if (not lower) or (lower and lower:trim() == "") then
+		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
+	elseif (input == "about") then
+		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame["About"])
+	else
+		self:Print("Unknown option.")
+	end
 
 end
 
@@ -147,6 +208,15 @@ do
 			end
 
 		end
+
+	end
+
+	function addon:ResetItemLock()
+
+		self:Print("Reseting item lockout.  You may still have a chance to be disconnected.")
+		lastitem = nil
+		lastquery = nil
+		totalquery = nil
 
 	end
 
