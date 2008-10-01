@@ -21,7 +21,7 @@
 ## X-Category: Raid
 ## X-Localizations: enUS
 ## X-Website: http://www.wowwiki.com/Querier/
-## X-Feedback: http://www.curse.com/downloads/details/12775/
+## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/querier.aspx
 ## X-AceForum: 13441
 ## X-RelSite-Curse: 12775
 ## X-RelSite-WoWI: 9072
@@ -35,8 +35,5 @@
 ## LoadOnDemand: 0
 
 embeds.xml
-# Hack because LibAboutPanel is on CFSVN and not WoWAce SVN
-# Remove this when WoWAce merges with CF
-libs\LibAboutPanel\lib.xml
 
 Querier.lua
