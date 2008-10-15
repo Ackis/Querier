@@ -11,8 +11,8 @@
 ## X-License: MIT modified with notification clause
 ## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
 
-## Interface: 20400
-## Version: 1.61
+## Interface: 30000
+## Version: 1.62
 ## X-Revision: $Rev$
 ## X-Date: $Date$
 
@@ -30,5 +30,4 @@
 ## LoadOnDemand: 0
 
 embeds.xml
-
 Querier.lua
