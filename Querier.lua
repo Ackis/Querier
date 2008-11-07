@@ -1,5 +1,27 @@
+--[[
 
-Querier = LibStub("AceAddon-3.0"):NewAddon("Querier", "AceConsole-3.0")
+************************************************************************
+
+Querier.lua
+
+File date: @file-date-iso@ 
+File revision: @file-revision@ 
+Project revision: @project-revision@
+Project version: @project-version@
+
+Author: Ackis on Illidan US Horde
+
+************************************************************************
+
+Please see Wowace.com for more information.
+
+************************************************************************
+
+--]]
+
+local MODNAME = "Querier"
+
+Querier = LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0")
 
 local addon = Querier
 local tonumber = tonumber
@@ -10,8 +32,10 @@ local maxspells = 60000
 
 -- Time between queries to reset list
 local TimeQuery = 300
+
 -- Addon version
-local addonversion = GetAddOnMetadata("Querier", "Version")
+local addonversion = GetAddOnMetadata(MODNAME, "Version")
+
 -- Max number of queries to allow during time period
 local MaxQuery = 10
 
