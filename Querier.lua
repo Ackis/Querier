@@ -159,9 +159,9 @@ function addon:SlashHandler(input)
 	local lower = string.lower(input)
 
 	if (not lower) or (lower and lower:trim() == "") then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
+		InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
 	elseif (input == "about") then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame["About"])
+		InterfaceOptionsFrame_OpenToCategory(self.optionsFrame["About"])
 	else
 		self:Print("Unknown option.")
 	end
