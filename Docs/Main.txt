@@ -1,0 +1,46 @@
+== What it does ==
+
+Querier is a small addon which will allow you to get Item and Spell links based off of ItemID or SpellID.  There is basic error checking to ensure that you do not get disconnected.
+
+== Where to get it ==
+[http://www.wowace.com/projects/querier/files/ WoW Ace] - Often Beta quality
+
+[http://wow.curse.com/downloads/wow-addons/details/querier.aspx Curse] - Most updated stable version
+
+[http://wowui.worldofwar.net/?p=mod&m=6461/ WoW UI] - Stable Version
+
+[http://www.wowinterface.com/downloads/info9072-Querier.html WoW Interface] - Stable Version
+
+== How to get it to work ==
+
+You pass a SpellID or ItemID to the mod and it will print out the Spell Link or Item Link
+
+=== Examples ===
+
+*<code>/iq 5342</code> - Will print out the item link for item ID 5342 if it exists.
+*<code>/sq 5</code> - Will print out the spell link for spell ID 5 if it exists.
+
+=== Commands ===
+
+*Item Query
+**<code>/ItemQuery</code> or <code>/iq</code>
+*Spell Query
+**<code>/SpellQuery</code> or <code>/sq</code>
+
+== Known Issues ==
+
+All known issues will be kept at the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker.
+
+Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to file bug reports.
+
+== Wish List ==
+
+Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to add suggestions and feature requests.
+
+== Bug Reporting ==
+
+Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to file bug reports.
+
+== Wiki ==
+
+[http://www.wowwiki.com/Querier WoW Wiki]
