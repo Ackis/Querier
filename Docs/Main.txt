@@ -3,13 +3,10 @@
 Querier is a small addon which will allow you to get Item and Spell links based off of ItemID or SpellID.  There is basic error checking to ensure that you do not get disconnected.
 
 == Where to get it ==
-[http://www.wowace.com/projects/querier/files/ WoW Ace] - Often Beta quality
-
-[http://wow.curse.com/downloads/wow-addons/details/querier.aspx Curse] - Most updated stable version
-
-[http://wowui.worldofwar.net/?p=mod&m=6461/ WoW UI] - Stable Version
-
-[http://www.wowinterface.com/downloads/info9072-Querier.html WoW Interface] - Stable Version
+*[http://www.wowace.com/projects/querier/files/ WoW Ace] - Often Beta quality
+*[http://wow.curse.com/downloads/wow-addons/details/querier.aspx Curse] - Most updated stable version
+*[http://wowui.worldofwar.net/?p=mod&m=6461/ WoW UI] - Stable Version
+*[http://www.wowinterface.com/downloads/info9072-Querier.html WoW Interface] - Stable Version
 
 == How to get it to work ==
 
