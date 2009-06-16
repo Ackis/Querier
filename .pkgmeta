@@ -2,6 +2,12 @@ package-as: Querier
 
 license-output: LICENSE.txt
 
+#manual-changelog:
+#    filename: Docs/CHANGES.txt
+#    markup-type: wiki
+
+enable-nolib-creation: yes
+
 ignore:
  - .pkgmeta
  - .docmeta
