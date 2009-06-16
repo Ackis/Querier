@@ -174,6 +174,11 @@ do
 	local lastquery = nil
 	local totalquery = 0
 
+	--- Queries the WoW server for a specific [[http://www.wowwiki.com/ItemLink Item ID]].
+	-- @name Querier:ItemQuery
+	-- @usage Querier:ItemQuery(3432)
+	-- @param ItemID The [[http://www.wowwiki.com/ItemLink Item ID]] of the item we are querying.
+	-- @return Item is queried and output into chat.
 	function addon:ItemQuery(ItemID)
 
 		local id = tonumber(ItemID)

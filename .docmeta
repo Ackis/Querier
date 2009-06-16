@@ -2,3 +2,7 @@
  type: wiki
  input-file: Docs/Main.txt
  output-page: "Main"
+-
+ type: luadoc
+ input-file: Querier.lua
+ output-page: "API"
