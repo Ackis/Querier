@@ -163,7 +163,7 @@ function addon:SlashHandler(input)
 	elseif (input == "about") then
 		InterfaceOptionsFrame_OpenToCategory(self.optionsFrame["About"])
 	else
-		self:Print("Unknown option.")
+		self:Print(L["Unknown option."])
 	end
 
 end
