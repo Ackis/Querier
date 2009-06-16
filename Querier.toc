@@ -27,5 +27,10 @@
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 
+#@no-lib-strip@
 embeds.xml
+#@end-no-lib-strip@
+
+local.xml
+
 Querier.lua
