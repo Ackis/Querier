@@ -5,8 +5,6 @@
 Querier.lua
 
 File date: @file-date-iso@ 
-File revision: @file-revision@ 
-Project revision: @project-revision@
 Project version: @project-version@
 
 Author: Ackis on Illidan US Horde
@@ -24,6 +22,7 @@ local MODNAME = "Querier"
 Querier = LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0")
 
 local addon = Querier
+
 local tonumber = tonumber
 local GetItemInfo = GetItemInfo
 local GetSpellLink = GetSpellLink
