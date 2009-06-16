@@ -132,7 +132,6 @@ local function giveOptions()
 
 end
 
-
 function addon:OnInitialize()
 
 	local AceConfig = LibStub("AceConfig-3.0")
@@ -151,6 +150,7 @@ function addon:OnInitialize()
 	self:RegisterChatCommand("sq", "SpellQuery")
 	self:RegisterChatCommand("is", "ItemScan")
 	self:RegisterChatCommand("ss", "SpellScan")
+	self:RegisterChatCommand("safequery", "SafeQuery")
 
 end
 
