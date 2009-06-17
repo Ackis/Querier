@@ -899,7 +899,7 @@ do
 
 	function addon:SafeQuery()
 		for i in pairs(t) do
-			self:ItemQuery(i)
+			GameTooltip:SetHyperlink("item:"..i..":0:0:0:0:0:0:0")
 		end
 	end
 
