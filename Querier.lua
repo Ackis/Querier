@@ -567,6 +567,7 @@ do
 		for i in pairs(t) do
 			local item = GetItemInfo(i)
 			if not item then
+				self:Print(i)
 				GameTooltip:SetHyperlink("item:"..i..":0:0:0:0:0:0:0")
 			end
 		end
