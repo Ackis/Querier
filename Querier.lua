@@ -471,7 +471,10 @@ do
 
 	function addon:SafeQuery()
 		for i in pairs(t) do
-			GameTooltip:SetHyperlink("item:"..i..":0:0:0:0:0:0:0")
+			local item = GetItemInfo(i)
+			if not item then
+				GameTooltip:SetHyperlink("item:"..i..":0:0:0:0:0:0:0")
+			end
 		end
 	end
 
