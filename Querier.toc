@@ -9,7 +9,7 @@
 
 ## X-Donate: http://www.curseforge.com/projects/querier/#w_donations
 
-## Interface: 30100
+## Interface: 30200
 ## Version: 1.8
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
