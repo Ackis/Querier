@@ -241,13 +241,14 @@ do
 
 	end
 
+	--- Resets the lock on querying to allow you to bypass the safeguards in place.
+	-- @name Querier:ResetItemLock
+	-- @usage Querier:ResetItemLock()
 	function addon:ResetItemLock()
-
 		self:Print("Reseting item lockout.  You may still have a chance to be disconnected.")
 		lastitem = nil
 		lastquery = nil
 		totalquery = 0
-
 	end
 
 end
