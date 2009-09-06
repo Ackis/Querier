@@ -147,6 +147,7 @@ function addon:OnInitialize()
 	-- Create slash commands
 	self:RegisterChatCommand("querier", "SlashHandler")
 	self:RegisterChatCommand("iq", "ItemQuery")
+	self:RegisterChatCommand("iqr", "ResetItemLock")
 	self:RegisterChatCommand("sq", "SpellQuery")
 	self:RegisterChatCommand("is", "ItemScan")
 	self:RegisterChatCommand("ss", "SpellScan")
@@ -245,7 +246,7 @@ do
 		self:Print("Reseting item lockout.  You may still have a chance to be disconnected.")
 		lastitem = nil
 		lastquery = nil
-		totalquery = nil
+		totalquery = 0
 
 	end
 
