@@ -376,6 +376,7 @@ do
 		20508,		22683,		22312,		22774,		21186,		21184,
 		21189,		21185,		22221,		20382,		21190,		21180,
 		21188,
+
 		--Stormpike Guard & Frostwolf Clan
 		17904,		17903,		17902,		17901,		17900,		17691,
 		20648,		19106,		19108,		19107,		17909,		17908,
@@ -513,7 +514,6 @@ do
 		31361,		30637,		29168,		29167,		32882,		31358,
 		29190,		24003,		34201,		29155,		29165,		29152,
 		33151,		24002,		31362,		24004,
-
 		-- WotLK Reps
 		--Alliance Vanguard
 		38459,		38465,		38455,		38463,		38453,		38457,
@@ -560,15 +560,23 @@ do
 		43156,		44188,		44196,		44197,		44187,		44140,
 		44200,		44198,		44201,		44199,		44152,		42185,
 		44202,		44203,		44204,		44205,		43955,		41722,
-
+		-- First Aid Recipes
+		6454,		39152,		21992,		21993,
+		-- Cooking Recipes
 	}
 
 	function addon:SafeQuery()
+		local count = 0
 		for i,j in pairs(t) do
+			if (count > 500) then
+				self:Print("Queried 500 items.  Breaking now to let the server catch up.  Please use the command again in a few moments.")
+				break
+			end
 			local item = GetItemInfo(j)
-			if not item then
-				self:Print(j)
+			if (not item) then
+				self:Print("Item not in cache: " .. j)
 				GameTooltip:SetHyperlink("item:"..j..":0:0:0:0:0:0:0")
+				count = count + 1
 			end
 		end
 	end
