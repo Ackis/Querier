@@ -1,12 +1,8 @@
 -------------------------------------------------------------------------------
-
 -- Querier.lua
-
 -------------------------------------------------------------------------------
-
 -- File date: @file-date-iso@ 
 -- Project version: @project-version@
-
 -------------------------------------------------------------------------------
 
 local MODNAME = "Querier"
@@ -343,8 +339,6 @@ end
 
 do
 
-	-- Table containing all "safe" items which can be auto queried.
-	local t = {
 	-- Table containing all "safe" items which can be auto queried.
 	local t = {
 
