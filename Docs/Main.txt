@@ -20,13 +20,22 @@ If you don't wish to donate money feel free to consider one of the following met
 
 ==Commands
 *Item Query
-**<<code>>/ItemQuery<</code>> or <<code>>/iq<</code>>
+**<<code>>/iq<</code>>
 *Spell Query
-**<<code>>/SpellQuery<</code>> or <<code>>/sq<</code>>
+**<<code>>/sq<</code>>
+*Reset the lock out time
+**<<code>>/iqr<</code>>
+*Scan item ID ranges
+**<<code>>/is<</code>>
+*Scan [[http://www.wowwiki.com/SpellLink | Spell ID]] ranges
+**<<code>>/ss<</code>>
+*Load all "safe" items into cache.  This will attempt to query all the known items which are safe (aka appear on standard vendors, crafted by items made standard by tradeskills, etc).  This is highly unstable at this moment in time.
+**<<code>>/safequery<</code>>
 
 ===Examples
-*<<code>>/iq 5342<</code>> - Will print out the item link for item ID 5342 if it exists.
-*<<code>>/sq 5<</code>> - Will print out the spell link for spell ID 5 if it exists.
+*<<code>>/iq 5342<</code>> - Will print out the item link for [[http://www.wowwiki.com/ItemLink | Item ID]] 5342 if it exists.
+*<<code>>/sq 5<</code>> - Will print out the spell link for [[http://www.wowwiki.com/SpellLink | Spell ID]] 5 if it exists.
+*<<code>>/ss 1 100<</code>> - Will print out all [[http://www.wowwiki.com/SpellLink | Spell ID's]] from 1 to 100.
 
 ==Known Issues
 All known issues will be kept at the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker.
