@@ -31,5 +31,6 @@ externals:
  libs/AceAddon-3.0:
   url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceAddon-3.0
  libs/LibAboutPanel:
-  url: git://git.curseforge.net/wow/libaboutpanel
+  url: git://git.curseforge.net/wow/libaboutpanel/mainline.git
+
  
