@@ -70,14 +70,6 @@ local function giveOptions()
 				set = function(info, v) Querier:ItemQuery(v) end,
 				order = 11,
 			},
-			ItemScan = {
-				type = "input",
-				name = "Item Scan (/is)",
-				desc = "Scans the server and provides an item links from first input to second input.",
-				get = false,
-				set = function(info, v) Querier:ItemScan(v) end,
-				order = 15,
-			},
 			ResetItem = {
 				type = "execute",
 				name = "Reset Item Lock",
@@ -104,14 +96,6 @@ local function giveOptions()
 				get = false,
 				set = function(info, v) Querier:SpellQuery(v) end,
 				order = 30,
-			},
-			SpellScan = {
-				type = "input",
-				name = "Spell Scan (/ss)",
-				desc = "Scans the server and provides an spell links from first input to second input.",
-				get = false,
-				set = function(info, v) Querier:SpellScan(v) end,
-				order = 35,
 			},
 		}
 	}
