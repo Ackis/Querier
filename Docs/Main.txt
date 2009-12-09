@@ -1,43 +1,43 @@
-== What it does ==
+==What it does
 Querier is a small addon which will allow you to get Item and Spell links based off of ItemID or SpellID.  There is basic error checking to ensure that you do not get disconnected.
 
 == Where to get it ==
-*[http://www.wowace.com/projects/querier/files/ WoW Ace] - Often Beta quality
-*[http://wow.curse.com/downloads/wow-addons/details/querier.aspx Curse] - Most updated stable version
-*[http://www.wowinterface.com/downloads/info9072-Querier.html WoW Interface] - Stable Version
+*[[http://www.wowace.com/projects/querier/files/ | WoW Ace]] - Often Beta quality
+*[[http://wow.curse.com/downloads/wow-addons/details/querier.aspx | Curse]] - Most updated stable version
+*[[http://www.wowinterface.com/downloads/info9072-Querier.html | WoW Interface]] - Stable Version
 
-== How to get it to work ==
+==How to get it to work
 You pass a SpellID or ItemID to the mod and it will print out the Spell Link or Item Link
 
-==Donations==
-I have setup a donation site via [http://www.pledgie.com/campaigns/3462 Pledgie].  Feel free to donate if you like this mod.  I have put countless hours of time and effort into it along with many people who have helped me.  I did not write this mod with the intent to make any money from it.  I wrote it to help me with some needs that I saw in-game, and well with requests and my goal to make it filled with information it's become a massive project.
+==Donations
+Ackis has setup a donation site via [[http://www.pledgie.com/campaigns/3462|Pledgie]].  Feel free to donate if you like this AddOn - we have put countless hours of time and effort into it along with many people who have helped us.  We did not write this AddOn with the intent to make any money from it.  It was written help us (and others) with some needs that we saw in-game, and with our goal to make it filled with information it's become a massive project.
 
 If you don't wish to donate money feel free to consider one of the following methods which may be more suitable:
-* Volunteer time at your local animal shelter such as the [http://www.edmontonhumanesociety.com/ Society for Prevention of Cruelty for Animals (SPCA)] or drop a few bucks off for them.  If you do this, please let [mailto:ackis@shaw.ca me] know.
-* Send 	[mailto:ackis@shaw.ca me] some UDE Points.  These points are obtained from the [http://www.wowtcg.com/ World of Warcraft TCG and Mini] game.
-* Send some gold to me in-game or help out with some rarer achievements. :)
-** [http://www.wowarmory.com/character-sheet.xml?r=Azgalor&n=Ackis Ackis]
+* Volunteer time at your local animal shelter such as the [[http://www.aspca.org/|Society for Prevention of Cruelty for Animals (SPCA)]] or a [[http://www.edmontonhumanesociety.com/|local humane shelter]] or drop a few bucks off for them.  If you do this, please let [[http://www.wowace.com/home/send-private-message/|Ackis]] know.
+* Send [[http://www.wowace.com/home/send-private-message/|Ackis]] some UDE Points.  These points are obtained from the [[http://www.wowtcg.com/|World of Warcraft TCG and Mini]] game.
+* Send some gold to one of the authors in-game or help out with some achievements, or even send a message saying thanks. :)
+** [[http://www.wowarmory.com/character-sheet.xml?r=Thunderlord&n=Ackis|Ackis Thunderlord (US)]] Ackis
 
-=== Examples ===
-*<code>/iq 5342</code> - Will print out the item link for item ID 5342 if it exists.
-*<code>/sq 5</code> - Will print out the spell link for spell ID 5 if it exists.
-
-=== Commands ===
+==Commands
 *Item Query
-**<code>/ItemQuery</code> or <code>/iq</code>
+**<<code>>/ItemQuery<</code>> or <<code>>/iq<</code>>
 *Spell Query
-**<code>/SpellQuery</code> or <code>/sq</code>
+**<<code>>/SpellQuery<</code>> or <<code>>/sq<</code>>
 
-== Known Issues ==
-All known issues will be kept at the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker.
+===Examples
+*<<code>>/iq 5342<</code>> - Will print out the item link for item ID 5342 if it exists.
+*<<code>>/sq 5<</code>> - Will print out the spell link for spell ID 5 if it exists.
 
-Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to file bug reports.
+==Known Issues
+All known issues will be kept at the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker.
 
-== Wish List ==
-Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to add suggestions and feature requests.
+Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to file bug reports.
 
-== Bug Reporting ==
-Please use the [http://www.wowace.com/projects/querier/tickets/ WoW Ace] tracker to file bug reports.
+==Wish List
+Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to add suggestions and feature requests.
 
-== Wiki ==
-[http://www.wowwiki.com/Querier WoW Wiki]
+==Bug Reporting
+Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to file bug reports.
+
+==Wiki
+[[http://www.wowwiki.com/Querier | WoW Wiki]]
