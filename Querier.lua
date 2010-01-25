@@ -60,7 +60,7 @@ local function giveOptions()
 			{
 				order = 10,
 				type = "description",
-				name = "To perform an item scan, enter the start ID followed by the end ID and click ok (ie: 500 1000).\n",
+				name = "To perform an item scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
 			},
 			ItemQuery = {
 				type = "input",
@@ -87,12 +87,12 @@ local function giveOptions()
 			{
 				order = 21,
 				type = "description",
-				name = "To perform a spell scan, enter the start ID followed by the end ID and click ok (ie: 500 1000).\n",
+				name = "To perform a spell scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
 			},
 			SpellQuery = {
 				type = "input",
 				name = "Spell Query (/sq)",
-				desc = "Queries the server and provides an spell link.",
+				desc = "Queries the server and provides a spell link.",
 				get = false,
 				set = function(info, v) Querier:SpellQuery(v) end,
 				order = 30,
@@ -112,7 +112,7 @@ function addon:OnInitialize()
 
 	AceConfig:RegisterOptionsTable("Querier", giveOptions)
 
-	-- Create blizzard interface options stuff
+	-- Create Blizzard interface options stuff
 	self.optionsFrame = AceConfigDialog:AddToBlizOptions("Querier","Querier")
 	self.optionsFrame["About"] = LibStub("LibAboutPanel").new("Querier", "Querier")
 
@@ -217,7 +217,7 @@ do
 	-- @name Querier:ResetItemLock
 	-- @usage Querier:ResetItemLock()
 	function addon:ResetItemLock()
-		self:Print("Reseting item lockout.  You may still have a chance to be disconnected.")
+		self:Print("Reseting item lockout.  You may still get disconnected.")
 		lastitem = nil
 		lastquery = nil
 		totalquery = 0
@@ -267,7 +267,7 @@ function addon:ItemScan(args)
 
 	if (StartID > EndID) then
 
-		self:Print("The end ID must be greater than the starting ID. Moron.")
+		self:Print("The end ID must be greater than the starting ID.")
 		return
 
 	end
@@ -306,7 +306,7 @@ function addon:SpellScan(args)
 
 	if (StartID > EndID) then
 
-		self:Print("The end ID must be greater than the starting ID. Moron.")
+		self:Print("The end ID must be greater than the starting ID.")
 		return
 
 	end

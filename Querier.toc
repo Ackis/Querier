@@ -1,4 +1,4 @@
-## Title: Querier @project-version@
+## Title: Querier
 
 ## Notes: A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.
 
@@ -7,7 +7,7 @@
 ## X-Author-Faction: Horde
 ## X-Author-Server: Thunderlord US
 
-## X-Donate: http://www.curseforge.com/projects/querier/#w_donations
+## X-Donate: http://www.wowace.com/addons/querier/#w-donations
 
 ## Interface: 30300
 ## Version: 1.82
@@ -18,7 +18,7 @@
 
 ## X-Category: Development Tools
 ## X-Localizations: enUS
-## X-Website: http://www.wowwiki.com/Querier/
+## X-Website: http://www.wowace.com/addons/querier
 ## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/querier.aspx
 
 ## Dependencies:
