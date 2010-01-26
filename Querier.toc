@@ -2,10 +2,8 @@
 
 ## Notes: A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.
 
-## Author: Ackis
+## Author: Ackis, Pompachomp
 ## eMail: ackis AT shaw DOT ca
-## X-Author-Faction: Horde
-## X-Author-Server: Thunderlord US
 
 ## X-Donate: http://www.wowace.com/addons/querier/#w-donations
 
