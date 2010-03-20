@@ -44,89 +44,79 @@ local MAX_SPELLS	= 60000
 local QUERY_DELAY	= 300		-- Time between queries to reset list
 local MAX_QUERIES	= 10		-- Max number of queries to allow during time period
 
-local function giveOptions()
-	local options = {
-		type='group',
-		args = {
-			header1 =
-			{
-				order = 1,
-				type = "header",
-				name = "",
-			},
-			version =
-			{
-				order = 2,
-				type = "description",
-				name = "Version " .. VERSION .. "\n",
-			},
-			about =
-			{
-				order = 3,
-				type = "description",
-				name = "A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.\n\nCommand line shortcuts are provided beside the name.\n",
-			},
-			header2 =
-			{
-				order = 4,
-				type = "header",
-				name = "",
-			},
-			itemdesc =
-			{
-				order = 10,
-				type = "description",
-				name = "To perform an item scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
-			},
-			ItemQuery = {
-				type = "input",
-				name = "Item Query (/iq)",
-				desc = "Queries the server and provides an item link.",
-				get = false,
-				set = function(info, v) addon:ItemQuery(v) end,
-				order = 11,
-			},
-			ResetItem = {
-				type = "execute",
-				name = "Reset Item Lock",
-				desc = "Resets the item lock when querying items.",
-				set = function() addon:ResetItemLock() end,
-				order = 16,
-			},
-			header3 =
-			{
-				order = 20,
-				type = "header",
-				name = "",
-			},
-			spelldesc =
-			{
-				order = 21,
-				type = "description",
-				name = "To perform a spell scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
-			},
-			SpellQuery = {
-				type = "input",
-				name = "Spell Query (/sq)",
-				desc = "Queries the server and provides a spell link.",
-				get = false,
-				set = function(info, v) addon:SpellQuery(v) end,
-				order = 30,
-			},
-		}
+local options = {
+	type='group',
+	args = {
+		header1 = {
+			order = 1,
+			type = "header",
+			name = "",
+		},
+		version = {
+			order = 2,
+			type = "description",
+			name = "Version " .. VERSION .. "\n",
+		},
+		about =	{
+			order = 3,
+			type = "description",
+			name = "A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.\n\nCommand line shortcuts are provided beside the name.\n",
+		},
+		header2 = {
+			order = 4,
+			type = "header",
+			name = "",
+		},
+		itemdesc = {
+			order = 10,
+			type = "description",
+			name = "To perform an item scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
+		},
+		ItemQuery = {
+			type = "input",
+			name = "Item Query (/iq)",
+			desc = "Queries the server and provides an item link.",
+			get = false,
+			set = function(info, v) addon:ItemQuery(v) end,
+			order = 11,
+		},
+		ResetItem = {
+			type = "execute",
+			name = "Reset Item Lock",
+			desc = "Resets the item lock when querying items.",
+			set = function() addon:ResetItemLock() end,
+			order = 16,
+		},
+		header3 = {
+			order = 20,
+			type = "header",
+			name = "",
+		},
+		spelldesc = {
+			order = 21,
+			type = "description",
+			name = "To perform a spell scan, enter the start ID followed by the end ID and click Okay (ie: 500 1000).\n",
+		},
+		SpellQuery = {
+			type = "input",
+			name = "Spell Query (/sq)",
+			desc = "Queries the server and provides a spell link.",
+			get = false,
+			set = function(info, v) addon:SpellQuery(v) end,
+			order = 30,
+		},
 	}
+}
 
-	return options
-
-end
-
+-------------------------------------------------------------------------------
+-- Initialization functions
+-------------------------------------------------------------------------------
 function addon:OnInitialize()
-
 	local AceConfig = LibStub("AceConfig-3.0")
 	local AceConfigReg = LibStub("AceConfigRegistry-3.0")
 	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
-	AceConfig:RegisterOptionsTable("Querier", giveOptions)
+	AceConfig:RegisterOptionsTable("Querier", options)
 
 	-- Create Blizzard interface options stuff
 	self.optionsFrame = AceConfigDialog:AddToBlizOptions("Querier","Querier")
