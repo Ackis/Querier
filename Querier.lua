@@ -130,25 +130,21 @@ function addon:OnInitialize()
 	self:RegisterChatCommand("is", "ItemScan")
 	self:RegisterChatCommand("ss", "SpellScan")
 	self:RegisterChatCommand("safequery", "SafeQuery")
-
 end
 
 function addon:SlashHandler(input)
-
 	local lower = string.lower(input)
 
-	if (not lower) or (lower and lower:trim() == "") then
+	if not lower or lower:trim() == "" then
 		InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
-	elseif (input == "about") then
+	elseif lower == "about" then
 		InterfaceOptionsFrame_OpenToCategory(self.optionsFrame["About"])
 	else
 		self:Print(L["Unknown option."])
 	end
-
 end
 
 do
-
 	local lastitem = nil
 	local lastquery = nil
 	local totalquery = 0
