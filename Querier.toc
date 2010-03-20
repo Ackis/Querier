@@ -31,4 +31,16 @@ embeds.xml
 
 locale.xml
 
+ItemIDs\Alchemy.lua
+ItemIDs\Blacksmithing.lua
+ItemIDs\Cooking.lua
+ItemIDs\Enchanting.lua
+ItemIDs\Engineering.lua
+ItemIDs\FirstAid.lua
+ItemIDs\Jewelcrafting.lua
+ItemIDs\Leatherworking.lua
+ItemIDs\Mounts.lua
+ItemIDs\Reputation.lua
+ItemIDs\Tailoring.lua
+
 Querier.lua
