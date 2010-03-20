@@ -5,30 +5,46 @@
 -- Project version: @project-version@
 -------------------------------------------------------------------------------
 
-local MODNAME = "Querier"
+-------------------------------------------------------------------------------
+-- Localized Lua globals.
+-------------------------------------------------------------------------------
+local _G = getfenv(0)
 
-Querier = LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0")
+local string = _G.string
 
-local addon = LibStub("AceAddon-3.0"):GetAddon(MODNAME)
-local L	= LibStub("AceLocale-3.0"):GetLocale(MODNAME)
+local pairs = _G.pairs
 
-local tonumber = tonumber
-local GetItemInfo = GetItemInfo
-local GetSpellLink = GetSpellLink
-local GetTime = GetTime
-local maxspells = 60000
+local tonumber = _G.tonumber
+local tostring = _G.tostring
 
--- Time between queries to reset list
-local TimeQuery = 300
+-------------------------------------------------------------------------------
+-- Localized Blizzard API.
+-------------------------------------------------------------------------------
+local GetItemInfo	= _G.GetItemInfo
+local GetSpellInfo	= _G.GetSpellInfo
+local GetSpellLink	= _G.GetSpellLink
+local GetTime		= _G.GetTime
 
--- Addon version
-local addonversion = GetAddOnMetadata(MODNAME, "Version")
+-------------------------------------------------------------------------------
+-- AddOn namespace.
+-------------------------------------------------------------------------------
+local MODNAME, private = ...
 
--- Max number of queries to allow during time period
-local MaxQuery = 10
+local LibStub	= _G.LibStub
+local addon	= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0")
+local L		= LibStub("AceLocale-3.0"):GetLocale(MODNAME)
+
+_G[MODNAME]	= addon
+
+------------------------------------------------------------------------------
+-- Constants.
+------------------------------------------------------------------------------
+local VERSION		= GetAddOnMetadata(MODNAME, "Version")
+local MAX_SPELLS	= 60000
+local QUERY_DELAY	= 300		-- Time between queries to reset list
+local MAX_QUERIES	= 10		-- Max number of queries to allow during time period
 
 local function giveOptions()
-
 	local options = {
 		type='group',
 		args = {
@@ -42,7 +58,7 @@ local function giveOptions()
 			{
 				order = 2,
 				type = "description",
-				name = "Version " .. addonversion .. "\n",
+				name = "Version " .. VERSION .. "\n",
 			},
 			about =
 			{
@@ -168,7 +184,7 @@ do
 		else
 			local maxtime
 			if (lastquery) then
-				maxtime = lastquery + TimeQuery
+				maxtime = lastquery + QUERY_DELAY
 			else
 				maxtime = 0
 			end
@@ -179,7 +195,7 @@ do
 			end
 
 			-- Only do the query if we haven't done too many
-			if (totalquery < MaxQuery) then
+			if (totalquery < MAX_QUERIES) then
 				-- Attempt to cache the ID
 				GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
 				-- Set the time of the query so we can reset failed queries later
@@ -226,7 +242,7 @@ function addon:SpellQuery(SpellID)
 				self:Print("Spell link: " .. SpellID .. " is spell ID: " .. ID)
 			else
 				local spellName
-				for i = 1, maxspells do
+				for i = 1, MAX_SPELLS do
 					spellName = GetSpellInfo(i)
 					if (spellName and (spellName:lower() == SpellID:lower())) then
 						self:Print("Spell link: " .. GetSpellLink(i) .. " is spell ID: " .. tostring(i))
