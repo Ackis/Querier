@@ -43,6 +43,7 @@ local VERSION		= GetAddOnMetadata(MODNAME, "Version")
 local MAX_SPELLS	= 60000
 local QUERY_DELAY	= 300		-- Time between queries to reset list
 local MAX_QUERIES	= 10		-- Max number of queries to allow during time period
+local MAX_SAFEQUERIES	= 500
 
 local options = {
 	type='group',
@@ -378,18 +379,37 @@ function addon:SpellScan(args)
 
 end
 
-function addon:SafeQuery()
+function addon:SafeQuery(input)
+	local lower = input and input:lower() or nil
+
+	if not lower then
+		self:Print("You should specify a category to query.")
+		return
+	end
+	local query_data = private[lower.."_items"]
+
+	if not query_data then
+		self:Printf("%s: No such category.", input)
+		return
+	else
+		self:Printf("Scanning %s items.", lower)
+	end
 	local count = 0
-	for i,j in pairs(t) do
-		if (count > 500) then
-			self:Print("Queried 500 items.  Breaking now to let the server catch up.  Please use the command again in a few moments.")
+	local attempts = 0
+
+	for index, id_num in pairs(query_data) do
+		if attempts > MAX_SAFEQUERIES then
+			self:Printf("Queried %d items.  Breaking now to let the server catch up.  Please use the command again in a few moments.", MAX_SAFEQUERIES)
 			break
 		end
-		local item = GetItemInfo(j)
-		if (not item) then
-			self:Print("Item not in cache: " .. j)
-			GameTooltip:SetHyperlink("item:"..j..":0:0:0:0:0:0:0")
-			count = count + 1
+
+		local item_name, item_link = GetItemInfo(id_num)
+
+		if not item_name then
+			GameTooltip:SetHyperlink("item:"..id_num..":0:0:0:0:0:0:0")
+			attempts = attempts + 1
 		end
+		count = count + 1
 	end
+	self:Printf("SafeQuery finished - %d items scanned: %d cache attempts.", count, attempts)
 end
