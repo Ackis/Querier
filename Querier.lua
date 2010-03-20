@@ -83,14 +83,14 @@ local function giveOptions()
 				name = "Item Query (/iq)",
 				desc = "Queries the server and provides an item link.",
 				get = false,
-				set = function(info, v) Querier:ItemQuery(v) end,
+				set = function(info, v) addon:ItemQuery(v) end,
 				order = 11,
 			},
 			ResetItem = {
 				type = "execute",
 				name = "Reset Item Lock",
 				desc = "Resets the item lock when querying items.",
-				set = function() Querier:ResetItemLock() end,
+				set = function() addon:ResetItemLock() end,
 				order = 16,
 			},
 			header3 =
@@ -110,7 +110,7 @@ local function giveOptions()
 				name = "Spell Query (/sq)",
 				desc = "Queries the server and provides a spell link.",
 				get = false,
-				set = function(info, v) Querier:SpellQuery(v) end,
+				set = function(info, v) addon:SpellQuery(v) end,
 				order = 30,
 			},
 		}
