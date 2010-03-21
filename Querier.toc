@@ -40,7 +40,6 @@ ItemIDs\FirstAid.lua
 ItemIDs\Jewelcrafting.lua
 ItemIDs\Leatherworking.lua
 ItemIDs\Mounts.lua
-ItemIDs\Reputation.lua
 ItemIDs\Tailoring.lua
 
 Querier.lua

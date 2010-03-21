@@ -174,19 +174,12 @@ local options = {
 			func = function() addon:SafeQuery("mount") end,
 			order = 49,
 		},
-		safe_query_reputation = {
-			type = "execute",
-			name = "Reputation",
-			desc = "Scans all reputation items which have been deemed as safe.",
-			func = function() addon:SafeQuery("reputation") end,
-			order = 50,
-		},
 		safe_query_tailoring = {
 			type = "execute",
 			name = "Tailoring",
 			desc = "Scans all Tailoring items which have been deemed as safe.",
 			func = function() addon:SafeQuery("tailoring") end,
-			order = 51,
+			order = 50,
 		},
 	}
 }
@@ -404,6 +397,9 @@ function addon:SafeQuery(input)
 		end
 
 		local item_name, item_link = GetItemInfo(id_num)
+		-- if item_name then
+			-- print(item_name.." has item id: "..id_num)
+		-- end
 
 		if not item_name then
 			GameTooltip:SetHyperlink("item:"..id_num..":0:0:0:0:0:0:0")
@@ -411,5 +407,6 @@ function addon:SafeQuery(input)
 		end
 		count = count + 1
 	end
+
 	self:Printf("SafeQuery finished - %d items scanned: %d cache attempts.", count, attempts)
 end
