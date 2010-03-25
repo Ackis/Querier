@@ -411,6 +411,7 @@ function addon:SafeQuery(input)
 		if not item_name then
 			GameTooltip:SetHyperlink("item:"..id_num..":0:0:0:0:0:0:0")
 			attempts = attempts + 1
+			self:Printf("%s will not cache.", id_num)
 		end
 		count = count + 1
 	end
