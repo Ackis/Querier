@@ -314,8 +314,10 @@ function addon:SpellQuery(SpellID)
 				self:Print("Spell: " .. SpellID .. " not found")
 			end
 	else
-		if (GetSpellLink(id) ~= nil) then
-			self:Print("Spell link found: " .. GetSpellLink(id))
+		local spell_link = GetSpellLink(id)
+
+		if spell_link then
+			self:Printf("Spell link found: %s", spell_link)
 		else
 			self:Print("Spell link unknown.")
 		end
