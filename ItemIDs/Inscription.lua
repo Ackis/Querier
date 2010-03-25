@@ -5,4 +5,4 @@ local INSCRIPTION_ITEMS = {
 	50166,
 	50168,
 }
-private.leatherworking_items = INSCRIPTION_ITEMS
+private.inscription_items = INSCRIPTION_ITEMS
