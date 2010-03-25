@@ -231,52 +231,49 @@ do
 	-- @param ItemID The [[http://www.wowwiki.com/ItemLink | Item ID]] of the item we are querying.
 	-- @return Item is queried and output into chat.
 	function addon:ItemQuery(ItemID)
-
 		local id = tonumber(ItemID)
-		-- We have a string, lets assume it's an item link
-		if (not id) then
+
+		if not id then
+			-- We have a string, lets assume it's an item link
 			-- New regexp thanks to Arrowmaster
-			local _,_,ID = string.find(ItemID, "item:(%d+)")
-			if (tonumber(ID) ~= nil) then
-				self:Print("Item link: " .. ItemID .. " is item ID: " .. ID)
+			local _, _, ID = string.find(ItemID, "item:(%d+)")
+
+			if tonumber(ID) then
+				self:Printf("Item link: %s is item ID: %d", ItemID, ID)
 			else
-				self:Print("Invalid input.  Must be numeric item-ID or item link.")
+				self:Print("Invalid input. Must be numeric item-ID or item link.")
 			end
-		-- We've got a number, lets try to get the link via ID
 		else
-			local maxtime
-			if (lastquery) then
-				maxtime = lastquery + QUERY_DELAY
-			else
-				maxtime = 0
-			end
+			-- We've got a number, lets try to get the link via ID
+			local maxtime = lastquery and (lastquery + QUERY_DELAY) or 0
 
 			-- If we haven't done a query in a long time, reset the query count.
-			if lastquery and (GetTime() > maxtime) then
+			if lastquery and GetTime() > maxtime then
 				totalquery = 0
 			end
 
 			-- Only do the query if we haven't done too many
-			if (totalquery < MAX_QUERIES) then
+			if totalquery < MAX_QUERIES then
 				-- Attempt to cache the ID
 				GameTooltip:SetHyperlink("item:"..id..":0:0:0:0:0:0:0")
+
 				-- Set the time of the query so we can reset failed queries later
 				lastquery = GetTime()
 				self:Print("Item queried.")
 
 				local _,itemlink = GetItemInfo(id)
 
-				if (itemlink ~= nil) then
-					self:Print("Item link found: " .. itemlink)
+				if itemlink then
+					self:Printf("Item link found: %s", itemlink)
 					return 0
 				else
 					-- Increase the number of failed queries
 					totalquery = totalquery + 1
-					self:Print("Item link not found.   Try again to see if item has been cached.")
+					self:Print("Item link not found. Try again to see if item has been cached.")
 					return 1
 				end
 			else
-				self:Print("Item not queried as there is a risk of disconnect.  Please try again later.")
+				self:Print("Item not queried as there is a risk of disconnect. Please try again later.")
 				return 2
 			end
 		end
@@ -286,33 +283,34 @@ do
 	-- @name Querier:ResetItemLock
 	-- @usage Querier:ResetItemLock()
 	function addon:ResetItemLock()
-		self:Print("Reseting item lockout.  You may still get disconnected.")
+		self:Print("Reseting item lockout. You may still get disconnected.")
 		lastitem = nil
 		lastquery = nil
 		totalquery = 0
 	end
-
 end
 
 function addon:SpellQuery(SpellID)
-
 	local id = tonumber(SpellID)
-	if (not id) then
-			local _,_,ID = string.find(SpellID, "spell:(%d+)")
 
-			if (tonumber(ID) ~= nil) then
-				self:Print("Spell link: " .. SpellID .. " is spell ID: " .. ID)
-			else
-				local spellName
-				for i = 1, MAX_SPELLS do
-					spellName = GetSpellInfo(i)
-					if (spellName and (spellName:lower() == SpellID:lower())) then
-						self:Print("Spell link: " .. GetSpellLink(i) .. " is spell ID: " .. tostring(i))
-						return
-					end
+	if not id then
+		local _, _, ID = string.find(SpellID, "spell:(%d+)")
+
+		if tonumber(ID) then
+			self:Printf("Spell link: %s is spell ID: %d", SpellID, ID)
+		else
+			local spellName
+
+			for i = 1, MAX_SPELLS do
+				spellName = GetSpellInfo(i)
+
+				if spellName and spellName:lower() == SpellID:lower() then
+					self:Printf("Spell link: %s is spell ID: %d", GetSpellLink(i), i)
+					return
 				end
-				self:Print("Spell: " .. SpellID .. " not found")
 			end
+			self:Printf("Spell: %s not found", SpellID)
+		end
 	else
 		local spell_link = GetSpellLink(id)
 
@@ -322,30 +320,29 @@ function addon:SpellQuery(SpellID)
 			self:Print("Spell link unknown.")
 		end
 	end
-
 end
 
 function addon:ItemScan(args)
-
 	local StartID, EndID = string.match(args, "([a-z0-9]+)[ ]?(.*)")
 
-	if (not StartID) or (not tonumber(StartID)) or (not EndID) or (not tonumber(EndID)) then
+	if not StartID or not tonumber(StartID) or not EndID or not tonumber(EndID) then
 		self:Print("Please enter a valid start and end ID.")
 		return
 	end
 
-	if (StartID > EndID) then
+	if StartID > EndID then
 		self:Print("The end ID must be greater than the starting ID.")
 		return
 	end
 
-	self:Print("Starting Item ID scan from ItemID: " .. StartID .. " to SpellID: " .. EndID)
+	self:Printf("Starting Item ID scan from ItemID: %d to %d.", StartID, EndID)
 
-	for i=StartID,EndID,1 do
+	for i = StartID, EndID, 1 do
 		local status = self:ItemQuery(i)
-		if (status == 1) then
+
+		if status == 1 then
 			self:ItemQuery(i)
-		elseif (status == 2) then
+		elseif status == 2 then
 			self:Print("Stopping automated item scan because of disconnect issues.")
 			break
 		end
@@ -353,25 +350,23 @@ function addon:ItemScan(args)
 end
 
 function addon:SpellScan(args)
-
 	local StartID, EndID = string.match(args, "([a-z0-9]+)[ ]?(.*)")
 
-	if (not StartID) or (not tonumber(StartID)) or (not EndID) or (not tonumber(EndID)) then
+	if not StartID or not tonumber(StartID) or not EndID or not tonumber(EndID) then
 		self:Print("Please enter a valid start and end ID.")
 		return
 	end
 
-	if (StartID > EndID) then
+	if StartID > EndID then
 		self:Print("The end ID must be greater than the starting ID.")
 		return
 	end
 
-	self:Print("Starting Spell ID scan from SpellID: " .. StartID .. " to SpellID: " .. EndID)
+	self:Printf("Starting Spell ID scan from SpellID: %d to %d.", StartID, EndID)
 
-	for i=StartID,EndID,1 do
+	for i = StartID, EndID, 1 do
 		self:SpellQuery(i)
 	end
-
 end
 
 function addon:SafeQuery(input)
@@ -394,7 +389,7 @@ function addon:SafeQuery(input)
 
 	for index, id_num in pairs(query_data) do
 		if attempts > MAX_SAFEQUERIES then
-			self:Printf("Queried %d items.  Breaking now to let the server catch up.  Please use the command again in a few moments.", MAX_SAFEQUERIES)
+			self:Printf("Queried %d items. Breaking now to let the server catch up. Please use the command again in a few moments.", MAX_SAFEQUERIES)
 			break
 		end
 
