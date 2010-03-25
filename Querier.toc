@@ -41,5 +41,6 @@ ItemIDs\Jewelcrafting.lua
 ItemIDs\Leatherworking.lua
 ItemIDs\Mounts.lua
 ItemIDs\Tailoring.lua
+ItemIDs\Inscription.lua
 
 Querier.lua
