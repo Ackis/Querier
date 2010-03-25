@@ -218,5 +218,12 @@ local TAILORING_ITEMS = {
 	47636,
 	47637,
 	47638,
+	2598,
+	4350,
+	4348,
+	6391,
+	7086,
+	10312,
+	14490,
 }
 private.tailoring_items = TAILORING_ITEMS

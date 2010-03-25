@@ -362,7 +362,6 @@ local JEWELCRAFTING_ITEMS = {
 	24218,
 	41777,
 	23154,
-	31879,
 	21948,
 	21942,
 	20975,
@@ -377,5 +376,8 @@ local JEWELCRAFTING_ITEMS = {
 	24219,
 	21945,
 	24164,
+	20974,
+	21954,
+	31879,
 }
 private.jewelcrafting_items = JEWELCRAFTING_ITEMS

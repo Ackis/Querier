@@ -306,5 +306,6 @@ local LEATHERWORKING_ITEMS = {
 	49965,
 	49966,
 	15733,
+	21548,
 }
 private.leatherworking_items = LEATHERWORKING_ITEMS

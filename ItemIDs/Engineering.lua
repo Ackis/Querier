@@ -98,5 +98,6 @@ local ENGINEERING_ITEMS = {
 	23811,
 	23816,
 	7561,
+	10606,
 }
 private.engineering_items = ENGINEERING_ITEMS
