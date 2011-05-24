@@ -7,7 +7,7 @@
 
 ## X-Donate: http://www.wowace.com/addons/querier/#w-donations
 
-## Interface: 40000
+## Interface: 40100
 ## Version: 1.9
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
