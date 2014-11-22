@@ -2,9 +2,9 @@
 Querier is a small addon which will allow you to get Item and Spell links based off of ItemID or SpellID.  There is basic error checking to ensure that you do not get disconnected.
 
 == Where to get it ==
-*[[http://www.wowace.com/projects/querier/files/ | WoW Ace]] - Often Beta quality
-*[[http://wow.curse.com/downloads/wow-addons/details/querier.aspx | Curse]] - Most updated stable version
-*[[http://www.wowinterface.com/downloads/info9072-Querier.html | WoW Interface]] - Stable Version
+*[[http://www.wowace.com/addons/querier/files/ | WoWAce]] - Often Beta quality
+*[[http://www.curse.com/addons/wow/querier | Curse]] - Most updated stable version
+*[[http://www.wowinterface.com/downloads/info9072-Querier.html | WoWInterface]] - Stable Version
 
 ==How to get it to work
 You pass a SpellID or ItemID to the mod and it will print out the Spell Link or Item Link
@@ -19,28 +19,23 @@ Ackis has setup a donation site via [[http://www.pledgie.com/campaigns/3462|Pled
 **<<code>>/sq<</code>>
 *Reset the lock out time
 **<<code>>/iqr<</code>>
-*Scan item ID ranges
+*Scan Item ID ranges
 **<<code>>/is<</code>>
-*Scan [[http://www.wowwiki.com/SpellLink | Spell ID]] ranges
+*Scan Spell ID ranges
 **<<code>>/ss<</code>>
 *Load all "safe" items into cache.  This will attempt to query all the known items which are safe (aka appear on standard vendors, crafted by items made standard by tradeskills, etc).  This is highly unstable at this moment in time.
 **<<code>>/safequery<</code>>
 
 ===Examples
-*<<code>>/iq 5342<</code>> - Will print out the item link for [[http://www.wowwiki.com/ItemLink | Item ID]] 5342 if it exists.
-*<<code>>/sq 5<</code>> - Will print out the spell link for [[http://www.wowwiki.com/SpellLink | Spell ID]] 5 if it exists.
-*<<code>>/ss 1 100<</code>> - Will print out all [[http://www.wowwiki.com/SpellLink | Spell ID's]] from 1 to 100.
-
-==Known Issues
-All known issues will be kept at the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker.
-
-Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to file bug reports.
+*<<code>>/iq 5342<</code>> - Will print out the [[http://www.wowpedia.org/ItemLink | Item Link]] for Item ID: 5342 if it exists.
+*<<code>>/sq 5<</code>> - Will print out the [[http://www.wowpedia.org/SpellLink | Spell Link]] for Spell ID: 5 if it exists.
+*<<code>>/ss 1 100<</code>> - Will print out all Spell IDs from 1 to 100.
 
 ==Wish List
-Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to add suggestions and feature requests.
+Please use the [[http://www.wowace.com/addons/querier/tickets/ | ticket tracker]] to add suggestions and feature requests.
 
 ==Bug Reporting
-Please use the [[http://www.wowace.com/projects/querier/tickets/ | WoW Ace]] tracker to file bug reports.
+Please use the [[http://www.wowace.com/addons/querier/tickets/ | ticket tracker]] to file bug reports.
 
 ==Wiki
 [[http://www.wowpedia.org/Querier | Wowpedia]]
